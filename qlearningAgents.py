@@ -202,13 +202,7 @@ class ApproximateQAgent(PacmanQAgent):
            Should update your weights based on transition
         """
         feats = self.featExtractor.getFeatures(state, action)
-        best_action = float('-inf')
-        possible_actions = self.getLegalActions(nextState)
-        if len(possible_actions) == 0:
-            best_action = 0
-        else:
-            for possible_action in possible_actions:
-                best_action = max(best_action, self.getQValue(nextState, possible_action))
+        best_action = self.computeValueFromQValues(nextState)
         diff = (reward + self.discount*best_action) - self.getQValue(state, action)
         for feat in feats:
             self.weights[feat] = self.weights[feat] + self.alpha*diff*feats[feat]
