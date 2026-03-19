@@ -53,9 +53,9 @@ def question2d():
     """
       Prefer the distant exit (+10), avoiding the cliff (-10).
     """
-    answerDiscount = 0.9
-    answerNoise = 0.2
-    answerLivingReward = -1
+    answerDiscount = 0.5
+    answerNoise = 0.1
+    answerLivingReward = 1
     return answerDiscount, answerNoise, answerLivingReward
     # If not possible, return 'NOT POSSIBLE'
 
